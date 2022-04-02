@@ -6,12 +6,28 @@
 
     <fragment
         android:id="@+id/login"
+        android:name="com.example.moviesapp.presentation.ui.login.LoginFragment"
         tools:label="LoginFragment"
-        tools:layout="@layout/fragment_login"/>
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_movie"
+            app:destination="@id/movie" />
+    </fragment>
 
     <fragment
         android:id="@+id/movie"
-        tools:label="LoginFragment"
-        tools:layout="@layout/fragment_login"/>
+        android:name="com.example.moviesapp.presentation.ui.movie.MovieFragment"
+        tools:label="MovieFragment"
+        tools:layout="@layout/fragment_movie">
+        <action
+            android:id="@+id/action_movie_to_movie_detail"
+            app:destination="@id/movie_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movie_detail"
+        android:name="com.example.moviesapp.presentation.ui.moviedetail.MovieDetailFragment"
+        android:label="MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail" />
 
 </navigation>

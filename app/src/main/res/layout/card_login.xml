@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_cl_user"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_cl_user"
+            android:hint="*Usuario:"
+            android:textColorHint="@color/black"
+            android:text="1"
+            android:textColor="@color/black"
+            android:inputType="numberDecimal"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_cl_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        app:boxBackgroundColor="@color/white"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_cl_user" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_cl_password"
+            android:hint="*Contraseña:"
+            android:textColorHint="@color/black"
+            android:text="1"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/b_cl_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:layout_marginTop="8dp"
+        android:text="*Ingresar"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/til_cl_password"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
