@@ -3,6 +3,9 @@ package com.example.moviesapp.data.di
 import android.content.Context
 import androidx.room.Room
 import com.example.moviesapp.data.movie.MovieDataBase
+import com.example.moviesapp.data.movie.MovieRepository
+import com.example.moviesapp.data.movie.datasource.MovieDatabaseDataSource
+import com.example.moviesapp.domain.repository.IMovieRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,5 +28,23 @@ object DataModule {
     @Provides
     @Singleton
     fun provideMovieDao(db: MovieDataBase) = db.movieDao()
+
+    @Provides
+    fun provideMovieRepository(
+        movieDatabaseDataSource: MovieDatabaseDataSource
+    ): IMovieRepository{
+        return MovieRepository(
+            movieDatabaseDataSource = movieDatabaseDataSource
+        )
+    }
+
+    @Provides
+    fun provideMovieDatabaseDataSource(
+        movieDataBase: MovieDataBase
+    ): MovieDatabaseDataSource{
+        return MovieDatabaseDataSource(
+            movieDataBase = movieDataBase
+        )
+    }
 
 }
