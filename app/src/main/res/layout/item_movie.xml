@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="@id/iv_im_image" />
 
     <RatingBar
-        android:id="@+id/tv_im_vote_average"
+        android:id="@+id/rb_im_vote_average"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:numStars="5"

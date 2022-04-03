@@ -7,4 +7,5 @@
     <string name="page">Pagina </string>
     <string name="tittle">Titulo</string>
     <string name="synopsis">Sinopsis de la pelicula</string>
+    <string name="release_date">Fecha de estreno</string>
 </resources>

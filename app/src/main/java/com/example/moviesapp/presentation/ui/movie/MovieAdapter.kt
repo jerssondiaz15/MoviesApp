@@ -33,7 +33,7 @@ class MovieAdapter(
             binding.apply {
                 ivImImage.load(URL + item.posterPath)
                 tvImTittle.text = item.title
-                tvImVoteAverage.rating = item.voteAverage!!.toFloat()
+                rbImVoteAverage.rating = item.voteAverage!!.toFloat()
                 root.setOnClickListener {
                     listOnItemClick.onClick(item)
                 }

@@ -34,7 +34,9 @@ class MovieDetailFragment: Fragment() {
         binding.apply {
             viewModel.movie.observe(viewLifecycleOwner){ movie ->
                 tvFmdTittle.text = movie.title
-                ivFmdImage.load(URL + movie.backdropPath)
+                tvFmdReleaseDate.text = movie.releaseDate
+                ivFmdImage.load(URL + movie.posterPath)
+                rbFmdVoteAverage.rating = movie.voteAverage!!.toFloat()
                 tvFmdSynopsis.text = movie.synopsis
             }
         }

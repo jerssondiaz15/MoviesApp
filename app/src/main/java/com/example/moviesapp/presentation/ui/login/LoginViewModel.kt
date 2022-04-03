@@ -13,7 +13,7 @@ class LoginViewModel @Inject constructor(): ViewModel(){
     val error: LiveData<Boolean> get() = _error
 
     fun validateUser(user: String, password: String){
-        if (user == "admin" && password == "123456"){
+        if (user == "Admin" && password == "Password*123."){
             _error.postValue(true)
         } else{
             _error.postValue(false)
