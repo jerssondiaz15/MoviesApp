@@ -1,6 +1,6 @@
-package com.example.moviesapp.data.movie.model.mapper
+package com.example.moviesapp.data.movie.local.model.mapper
 
-import com.example.moviesapp.data.movie.model.DbMovie
+import com.example.moviesapp.data.movie.local.model.DbMovie
 import com.example.moviesapp.domain.model.Movie
 
 fun List<DbMovie>.toListMovie(): List<Movie> = this.map { it.toMovie() }

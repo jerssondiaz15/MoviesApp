@@ -6,14 +6,22 @@ import com.example.moviesapp.domain.repository.IMovieRepository
 import javax.inject.Inject
 
 class GetListMoviesUseCase @Inject constructor(
-    private val iMovieRepository: IMovieRepository
+    private val iMovieRepository: IMovieRepository,
+    private val repository: MovieRemoteRepository
 ) {
 
-    private val repository = MovieRemoteRepository()
-
     suspend operator fun invoke(): List<Movie>?{
-        return repository.getListMovies()
-        //return iMovieRepository.getListMovie()
+
+        val movie = repository.getListMovies()
+        return if (movie!!.isNotEmpty()){
+            iMovieRepository.deleteAllMovies()
+            movie.map {
+                iMovieRepository.insertMovies(it)
+            }
+            movie
+        } else{
+            iMovieRepository.getListMovie()
+        }
     }
 
 }

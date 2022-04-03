@@ -19,6 +19,9 @@ class MovieViewModel @Inject constructor(
     private val _listMovies = MutableLiveData<List<Movie>>()
     val listMovies: LiveData<List<Movie>> get() = _listMovies
 
+    private val _movie = MutableLiveData<Movie>()
+    val movie: LiveData<Movie> get() = _movie
+
     init {
         getList()
     }
@@ -29,6 +32,10 @@ class MovieViewModel @Inject constructor(
             _listMovies.postValue(result!!)
             Log.i("result: ", result.toString())
         }
+    }
+
+    fun setMovie(movie: Movie){
+        _movie.postValue(movie)
     }
 
 }

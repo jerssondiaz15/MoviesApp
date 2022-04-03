@@ -1,8 +1,8 @@
-package com.example.moviesapp.data.movie
+package com.example.moviesapp.data.movie.local
 
-import com.example.moviesapp.data.movie.datasource.MovieDatabaseDataSource
-import com.example.moviesapp.data.movie.model.mapper.toDbMovie
-import com.example.moviesapp.data.movie.model.mapper.toListMovie
+import com.example.moviesapp.data.movie.local.datasource.MovieDatabaseDataSource
+import com.example.moviesapp.data.movie.local.model.mapper.toDbMovie
+import com.example.moviesapp.data.movie.local.model.mapper.toListMovie
 import com.example.moviesapp.domain.model.Movie
 import com.example.moviesapp.domain.repository.IMovieRepository
 import javax.inject.Inject

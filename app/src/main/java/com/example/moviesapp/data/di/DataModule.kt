@@ -2,15 +2,18 @@ package com.example.moviesapp.data.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.moviesapp.data.movie.MovieDataBase
-import com.example.moviesapp.data.movie.MovieRepository
-import com.example.moviesapp.data.movie.datasource.MovieDatabaseDataSource
+import com.example.moviesapp.data.movie.local.MovieDataBase
+import com.example.moviesapp.data.movie.local.MovieRepository
+import com.example.moviesapp.data.movie.local.datasource.MovieDatabaseDataSource
+import com.example.moviesapp.data.movie.remote.network.MovieApiClient
 import com.example.moviesapp.domain.repository.IMovieRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -30,6 +33,21 @@ object DataModule {
     fun provideMovieDao(db: MovieDataBase) = db.movieDao()
 
     @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit{
+        return Retrofit.Builder()
+            .baseUrl("https://api.themoviedb.org/3/movie/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieApiClient(retrofit: Retrofit): MovieApiClient{
+        return retrofit.create(MovieApiClient::class.java)
+    }
+
+    @Provides
     fun provideMovieRepository(
         movieDatabaseDataSource: MovieDatabaseDataSource
     ): IMovieRepository{
@@ -41,7 +59,7 @@ object DataModule {
     @Provides
     fun provideMovieDatabaseDataSource(
         movieDataBase: MovieDataBase
-    ): MovieDatabaseDataSource{
+    ): MovieDatabaseDataSource {
         return MovieDatabaseDataSource(
             movieDataBase = movieDataBase
         )

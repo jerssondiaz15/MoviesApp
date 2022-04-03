@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.moviesapp.R
 import com.example.moviesapp.databinding.FragmentMovieBinding
 import com.example.moviesapp.domain.model.Movie
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +20,7 @@ class MovieFragment: Fragment() {
     private var _binding: FragmentMovieBinding? = null
     private val binding: FragmentMovieBinding get() = _binding!!
 
-    private val viewModel: MovieViewModel by viewModels()
+    private val viewModel: MovieViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,6 +41,8 @@ class MovieFragment: Fragment() {
         viewModel.listMovies.observe(viewLifecycleOwner){ list ->
             val movieAdapter = MovieAdapter(object: OnItemClick{
                 override fun onClick(item: Movie) {
+                    viewModel.setMovie(item)
+                    findNavController().navigate(R.id.action_movie_to_movie_detail)
                     Log.i("Item: ", item.title)
                 }
             })

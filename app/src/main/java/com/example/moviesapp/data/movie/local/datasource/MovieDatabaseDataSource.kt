@@ -1,7 +1,7 @@
-package com.example.moviesapp.data.movie.datasource
+package com.example.moviesapp.data.movie.local.datasource
 
-import com.example.moviesapp.data.movie.MovieDataBase
-import com.example.moviesapp.data.movie.model.DbMovie
+import com.example.moviesapp.data.movie.local.MovieDataBase
+import com.example.moviesapp.data.movie.local.model.DbMovie
 
 class MovieDatabaseDataSource(
     private val movieDataBase: MovieDataBase

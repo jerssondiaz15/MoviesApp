@@ -38,6 +38,7 @@
         android:numStars="5"
         android:rating="3"
         android:stepSize="0.5"
+        android:isIndicator="true"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@id/iv_im_image"
         app:layout_constraintTop_toBottomOf="@+id/tv_im_tittle"
