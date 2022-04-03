@@ -2,8 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_fl_alert"
+        style="@style/TextViewAlertError"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:text="@string/error"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/i_fl_card"
+        app:layout_constraintEnd_toEndOf="@id/i_fl_card"
+        app:layout_constraintBottom_toTopOf="@+id/i_fl_card"/>
 
     <include
         android:id="@+id/i_fl_card"

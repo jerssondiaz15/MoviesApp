@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MoviesApp</string>
+    <string name="error">Datos incorrectos</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="sig_in">Ingresar</string>
 </resources>

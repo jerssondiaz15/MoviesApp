@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.moviesapp.R
 import com.example.moviesapp.databinding.FragmentLoginBinding
@@ -16,6 +17,8 @@ class LoginFragment: Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding: FragmentLoginBinding get() = _binding!!
 
+    private val viewModel: LoginViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,12 +26,25 @@ class LoginFragment: Fragment() {
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
         initListener()
+        initObservers()
         return binding.root
     }
 
     private fun initListener() {
-        binding.iFlCard.bClSignIn.setOnClickListener {
-            findNavController().navigate(R.id.action_login_to_movie)
+        binding.iFlCard.apply {
+            bClSignIn.setOnClickListener {
+                viewModel.validateUser(etClUser.text.toString(), etClPassword.text.toString())
+            }
+        }
+    }
+
+    private fun initObservers() {
+        viewModel.error.observe(viewLifecycleOwner){
+            if (it){
+                findNavController().navigate(R.id.action_login_to_movie)
+            } else{
+                binding.tvFlAlert.visibility = View.VISIBLE
+            }
         }
     }
 
