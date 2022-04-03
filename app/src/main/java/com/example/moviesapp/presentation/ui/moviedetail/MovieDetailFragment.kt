@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import coil.load
 import com.example.moviesapp.databinding.FragmentMovieDetailBinding
-import com.example.moviesapp.presentation.ui.movie.MovieViewModel
+import com.example.moviesapp.presentation.ui.MovieViewModel
 import com.example.moviesapp.presentation.ui.movie.URL
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,7 +1,6 @@
 package com.example.moviesapp.presentation.ui.movie
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviesapp.R
 import com.example.moviesapp.databinding.FragmentMovieBinding
 import com.example.moviesapp.domain.model.Movie
+import com.example.moviesapp.presentation.ui.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
