@@ -29,8 +29,20 @@ class MovieFragment: Fragment() {
     ): View {
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
         initView()
+        initListener()
         initObservers()
         return binding.root
+    }
+
+    private fun initListener() {
+        binding.iFpPages.apply {
+            imCpLeft.setOnClickListener {
+                viewModel.previousPage()
+            }
+            imCpRight.setOnClickListener {
+                viewModel.nextPage()
+            }
+        }
     }
 
     private fun initView() {
@@ -38,16 +50,26 @@ class MovieFragment: Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.listMovies.observe(viewLifecycleOwner){ list ->
-            val movieAdapter = MovieAdapter(object: OnItemClick{
-                override fun onClick(item: Movie) {
-                    viewModel.setMovie(item)
-                    findNavController().navigate(R.id.action_movie_to_movie_detail)
-                    Log.i("Item: ", item.title)
+        binding.apply {
+            viewModel.listMovies.observe(viewLifecycleOwner){ list ->
+                val movieAdapter = MovieAdapter(object: OnItemClick{
+                    override fun onClick(item: Movie) {
+                        viewModel.setMovie(item)
+                        findNavController().navigate(R.id.action_movie_to_movie_detail)
+                    }
+                })
+                movieAdapter.submitList(list)
+                rvFpCoinList.adapter = movieAdapter
+            }
+            viewModel.page.observe(viewLifecycleOwner){ page ->
+                tvFmdTittle.text = "pagina ${page}"
+                iFpPages.tvCpPageNum.text = page.toString()
+                if (page.equals(1)){
+                    iFpPages.imCpLeft.visibility = View.GONE
+                } else{
+                    iFpPages.imCpLeft.visibility = View.VISIBLE
                 }
-            })
-            movieAdapter.submitList(list)
-            binding.rvFpCoinList.adapter = movieAdapter
+            }
         }
     }
 

@@ -22,20 +22,34 @@ class MovieViewModel @Inject constructor(
     private val _movie = MutableLiveData<Movie>()
     val movie: LiveData<Movie> get() = _movie
 
+    private val _page = MutableLiveData<Int>()
+    val page: LiveData<Int> get() = _page
+
     init {
+        _page.value = 1
         getList()
     }
 
     private fun getList(){
         viewModelScope.launch {
-            val result = getListMoviesUseCase.invoke()
-            _listMovies.postValue(result!!)
+            val result = getListMoviesUseCase.invoke(_page.value!!)
+            _listMovies.postValue(result)
             Log.i("result: ", result.toString())
         }
     }
 
     fun setMovie(movie: Movie){
         _movie.postValue(movie)
+    }
+
+    fun nextPage(){
+        _page.postValue(_page.value!!.plus(1))
+        getList()
+    }
+
+    fun previousPage(){
+        _page.postValue(_page.value!!.minus(1))
+        getList()
     }
 
 }

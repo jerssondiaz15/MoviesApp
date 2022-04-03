@@ -33,7 +33,8 @@ class LoginFragment: Fragment() {
     private fun initListener() {
         binding.iFlCard.apply {
             bClSignIn.setOnClickListener {
-                viewModel.validateUser(etClUser.text.toString(), etClPassword.text.toString())
+                //viewModel.validateUser(etClUser.text.toString(), etClPassword.text.toString())
+                findNavController().navigate(R.id.action_login_to_movie)
             }
         }
     }

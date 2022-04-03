@@ -9,10 +9,12 @@ class MovieService @Inject constructor(
     private val api: MovieApiClient
 ) {
 
-    suspend fun getListMovies(): ListMovieResponse? {
+    suspend fun getListMovies(nextPage: Int): ListMovieResponse? {
         return withContext(Dispatchers.IO){
-            val response = api.getListMovies()
+            val response = api.getListMovies(nextPage, API_KEY)
             response.body()
         }
     }
 }
+
+const val API_KEY = "f46b58478f489737ad5a4651a4b25079"

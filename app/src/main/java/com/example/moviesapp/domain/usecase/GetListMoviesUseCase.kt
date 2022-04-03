@@ -10,9 +10,9 @@ class GetListMoviesUseCase @Inject constructor(
     private val repository: MovieRemoteRepository
 ) {
 
-    suspend operator fun invoke(): List<Movie>?{
+    suspend operator fun invoke(nextPage: Int): List<Movie>{
 
-        val movie = repository.getListMovies()
+        val movie = repository.getListMovies(nextPage)
         return if (movie!!.isNotEmpty()){
             iMovieRepository.deleteAllMovies()
             movie.map {

@@ -9,8 +9,8 @@ class MovieRemoteRepository @Inject constructor(
     private val api: MovieService
 ) {
 
-    suspend fun getListMovies(): List<Movie>? {
-        val response = api.getListMovies()
+    suspend fun getListMovies(nextPage: Int): List<Movie>? {
+        val response = api.getListMovies(nextPage)
         return response?.listMovies?.toListMovie()
     }
 

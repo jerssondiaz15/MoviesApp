@@ -4,4 +4,5 @@
     <string name="user">Usuario</string>
     <string name="password">Contraseña</string>
     <string name="sig_in">Ingresar</string>
+    <string name="page">Pagina </string>
 </resources>
